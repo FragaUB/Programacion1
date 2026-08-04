@@ -177,14 +177,10 @@ vagón tiene un limite de 150.
 3. Mostrar(tren): Mostrar informe de carga
 '''
 
-import random
+from random import randint
 
 def generar_paquete():
-    return random.randint(10, 40)
-
-
-def cargar_vagon(tren, paquete):
-    print("cargando trencito")
+    return randint(10, 40)
 
 
 def crear_tren(n):
@@ -201,6 +197,5 @@ def crear_tren(n):
     print(tren)
 
 crear_tren(8)
-
 
 ####################################################################
