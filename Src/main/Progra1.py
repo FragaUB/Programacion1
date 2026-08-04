@@ -142,6 +142,7 @@ def clasificar_productos(pila_recepcion, camion_envio, defectuosos):
     while pila_recepcion:
         producto = pila_recepcion.pop()
         id_producto, estado = producto
+
         if estado.lower() in ["roto", "defectuoso"]:
             defectuosos.append(producto)
         else:
@@ -175,5 +176,31 @@ y una tupla compuesta de información del paquete y el peso. El
 vagón tiene un limite de 150.
 3. Mostrar(tren): Mostrar informe de carga
 '''
+
+import random
+
+def generar_paquete():
+    return random.randint(10, 40)
+
+
+def cargar_vagon(tren, paquete):
+    print("cargando trencito")
+
+
+def crear_tren(n):
+    tren  = []
+    for i in range(n):
+        paquete = generar_paquete()
+        tren.append([]) # nuevo vagon
+        peso = 0
+        while peso < 150:
+            paquete = generar_paquete()
+            peso += paquete
+            if peso < 150:  
+                tren[i].append(paquete)
+    print(tren)
+
+crear_tren(8)
+
 
 ####################################################################
