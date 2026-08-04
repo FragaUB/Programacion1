@@ -1,44 +1,41 @@
 # Ejercicios de Colas
 # Ejercicio Sistema de salud:
 
-def cargar_paciente(id, name, surname, priority):
+def cargar_paciente(id, name, surname, priority, nuevo_id, nuevo_name, nuevo_surname, nueva_priority):
     print("Cargando pacientes...")
-    # Se crea un nuevo objecto "paciente" y se le agrega a la ultima posicion de la lista
-    id_new = 5
-    name_new = "Pepe"
-    surname_new = "Austral"
-    priority_new = 1  # 0 = prioridad baja, 1 = prioridad alta
+    # Se crea un nuevo paciente y se le agrega a la ultima posicion de la lista
+    id.append(nuevo_id)
+    name.append(nuevo_name)
+    surname.append(nuevo_surname)
+    priority.append(nueva_priority)
 
-    id.append(id_new) 
-    name.append(name_new) 
-    surname.append(surname_new) 
-    priority.append(priority_new)
-
-    print(f"Paciente {name_new} {surname_new} cargado con éxito.")
+    print(f"Paciente {nuevo_name} {nuevo_surname} cargado con éxito.")
     # Llamada a la función para ordenar pacientes por prioridad
-    ordernar_pacientes(id, name, surname, priority)
-    mostrar_lista_pacientes(id, name, surname)
+    ordenar_pacientes(id, name, surname, priority)
 
-def ordernar_pacientes(id, name, surname, priority):
+def ordenar_pacientes(id, name, surname, priority):
     id_aux = []
     name_aux = []
     surname_aux = []
     priority_aux = []
-    # Agarramos sincronicamente las cuatros listas, dentro de un bucle for, y vamos preguntando, si alguno tiene prioridad, si hay uno con prioridad, al crear una lista auxiliar, vamos a almacenar momentanemanete los pacientes sin prioridad, y intercambiamos la posicion del paciente con prioridad, y luego volvemos a agregar los pacientes sin prioridad a la lista original.
     for i in range(len(priority)):
         if priority[i] == 1:
-            id_aux.append(id[i]) 
-            name_aux.append(name[i]) 
-            surname_aux.append(surname[i]) 
+            id_aux.append(id[i])
+            name_aux.append(name[i])
+            surname_aux.append(surname[i])
             priority_aux.append(priority[i])
 
-    # Almacenamos los pacientes sin prioridad en las listas auxiliares
     for j in range(len(priority)):
-        if j != i: # para todos aquellos pacientes cuya prioridad sea 0:
+        if priority[j] == 0:
             id_aux.append(id[j])
             name_aux.append(name[j])
             surname_aux.append(surname[j])
             priority_aux.append(priority[j])
+
+    id.clear()
+    name.clear()
+    surname.clear()
+    priority.clear()
 
     # En este momemnto, la lista original tiene un paciente con prioridad en la posicion i, y las listas auxiliares tienen los pacientes sin prioridad.
     id.extend(id_aux) 
@@ -47,15 +44,15 @@ def ordernar_pacientes(id, name, surname, priority):
     priority.extend(priority_aux) 
     return True
 
-def mostrar_lista_pacientes(id, name, surname):
+def mostrar_lista_pacientes(id, name, surname, priority):
     print("Lista de pacientes:")
     for i in range(len(id)):
-        print(f"Posicion {i}: ID: {id[i]}, Nombre: {name[i]}, Apellido: {surname[i]}")
+        print(f"Posicion {i}: ID: {id[i]}, Nombre: {name[i]}, Apellido: {surname[i]}, Prioridad: {priority[i]}")
 
 # Antes de antender a un paciente, siempre se verifica que no haya algun paciente con prioridad en la cola.
 def atender_paciente(id, name, surname, priority):
-    print ("Llamado al paciente:")
-    if id and name and surname:
+    print("Llamado al paciente:")
+    if id:
         paciente_atendido = (id.pop(0), name.pop(0), surname.pop(0), priority.pop(0))
         print(f"Paciente atendido: ID: {paciente_atendido[0]}, Nombre: {paciente_atendido[1]}, Apellido: {paciente_atendido[2]}, Prioridad: {paciente_atendido[3]}")
     else:
@@ -66,9 +63,9 @@ def main():
     name = ["Juan", "María", "Pedro", "Ana", "Luis"]
     surname = ["Gómez", "López", "Rodríguez", "Martínez", "Hernández"]
     priority = [0, 1, 1, 0, 1]  # 0 = prioridad baja, 1 = prioridad alta
-    cargar_paciente(id, name, surname, priority) # llamada a la función para cargar pacientes
-    mostrar_lista_pacientes(id, name, surname) # llamada a la función para mostrar la lista de pacientes
-    atender_paciente(id, name, surname, priority) # llamada a la función para atender pacientes
+    cargar_paciente(id, name, surname, priority, 5, "Pepe", "Austral", 1)  # llamada a la función para cargar pacientes
+    mostrar_lista_pacientes(id, name, surname, priority)   #llamada a la función para mostrar la lista de pacientes
+    atender_paciente(id, name, surname, priority)  # llamada a la función para atender pacientes
 
 main()
 
