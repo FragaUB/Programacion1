@@ -32,7 +32,11 @@ def generar_mapa():
 
 def imprimir_mapa(mapa):
     for i in range(len(mapa)):
-        print(mapa[i])
+        for j in range(len(mapa[i])):
+            if mapa[i][j]:
+                print(f"[{i},{j}]", end="")
+            else:
+                print("[   ]", end="")
 
 def agregar_oficinas(mapa, oficinas):
     for i in range(10): # Este recorrera las filas
