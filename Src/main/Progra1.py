@@ -28,7 +28,7 @@ def separar_pares_impares(pila):
     pila_pares = []
     pila_impares = []
 
-    while (pila.size() > 0):
+    while (pila.length() > 0):
         numero = pila.pop()
         if numero % 2 == 0:
             pila_pares.append(numero)
@@ -63,7 +63,7 @@ def ordenar_pila_libros(pila_origen): # Ejemplo: pila_origen = [5, 1, 3, 2, 4]
         libro_actual = pila_origen.pop()
 
         # Mientras la pila ordenada no esté vacía y el libro en la cima sea más grande que el libro actual.
-        while pila_ordenada and pila_ordenada[-1] > libro_actual:
+        while len(pila_ordenada) > 0 and pila_ordenada[-1] > libro_actual:
             # Desapilar de la pila ordenada y apilarlo de nuevo en la pila original.
             pila_origen.append(pila_ordenada.pop())
 
