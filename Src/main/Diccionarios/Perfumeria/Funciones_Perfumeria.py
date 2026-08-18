@@ -24,9 +24,9 @@ def generar_producto():
             new_stock = int(input("Ingrese al cantidad de stock: "))
             # Faltan las verificaciones, se dejan para despues. :)
             # Agregar al diccionario
-            nombres['cod'] = new_name
-            precios['cod'] = new_price
-            stock['cod'] = new_stock
+            nombres[cod] = new_name
+            precios[cod] = new_price
+            stock[cod] = new_stock
             print("Producto agregado!")
             return True
         else:
@@ -36,10 +36,10 @@ def generar_producto():
 
 def eliminar_producto():
     print("Eliminar un producto determinado")
-    cod = int(input("Escriba el codigo:"))
-    for i, j in nombres.items():
+    cod = input("Escriba el codigo:")
+    for i in nombres.items():
         print(f"Codigos dispobibles: {i}")
-    if cod in nombres[cod]:
+    if cod in nombres.keys():
         del nombres[cod]
         del precios[cod]
         del stock[cod]
@@ -49,8 +49,8 @@ def eliminar_producto():
 
 def modificar_precio_producto():
     print("Modificar el precio de un producto")
-    cod = int(input("Escriba el codigo:"))
-    if cod in precios[cod]:
+    cod = input("Escriba el codigo:")
+    if cod in precios.keys():
         new_price = float(int("Ingrese el nuevo precio: "))
         precios[cod] = new_price
         print(f"Precio del codigo {cod} actualizado!")
@@ -77,12 +77,15 @@ def generar_compra():
     elif op == 2:
         Vender()
         return True
+    else:
+        print("Opcion invalida")
+    return False
 
 def Sumar_Stock():
     cod = input("Escriba el codigo:")
-    if cod in stock[cod]:
+    if cod in stock.keys():
         new_stock = float(int("Ingrese el nuevo stock: "))
-        stock[cod] + new_stock
+        stock[cod] += new_stock
         print(f"Stock del codigo {cod} actualizado!")
         generar_catalogo()
         return True
@@ -97,7 +100,10 @@ def Vender() -> tuple[str, float]:
     if cod in nombres.keys():
         carrito = nombres[cod]
         precio = precios[cod]
-        stock[cod] =- 1
+        if stock[cod] > 0:
+            stock[cod] -= 1
+        else:
+            print("No hay stock disponible")        
         return carrito, precio
     else:
         print("Error al generar la venta")
