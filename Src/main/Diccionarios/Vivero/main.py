@@ -3,7 +3,7 @@ import vivero
 def main() -> None:
     print("=== SISTEMA DE GESTION DE VIVERO ===")
     catalogo = vivero.obtener_catalogo_inicial()
-    # 1. Revisar plantas con necesidad de riego
+    # Catalogo => Tipo Diccionarios
     a_regar = vivero.obtener_plantas_para_regar(catalogo)
     print("\n Plantas que requieren riego urgente:")
     for p in a_regar:
