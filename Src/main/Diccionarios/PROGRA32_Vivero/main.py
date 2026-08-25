@@ -16,5 +16,16 @@ def main() -> None:
     for p in catalogo:
         print(f" - {p['nombre']}: ${p['precio']:.2f}")
 
+    ##############################
+    # PROGRA_V2_MANZANAS:
+    ranking_regado = sorted(catalogo, key=lambda planta: planta["dias_sin_regar"] - planta["frecuencia_riego_dias"])
+    print(ranking_regado)
+    
+    precio_descuento = list[lambda catalogo: round(catalogo["precio"] * 0.8, 2) if catalogo["precio"] > 2000 else catalogo["precio"]]
+    print(precio_descuento)
+
+    plantas_seleccionadas = list(filter( lambda catalogo: (catalogo["nombre"].startswith("M") or catalogo["nombre"].startswith("L")) and catalogo["precio"] < 2000, catalogo))
+    print(plantas_seleccionadas)
+
 if __name__ == "__main__":
     main()
