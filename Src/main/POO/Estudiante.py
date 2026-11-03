@@ -40,7 +40,7 @@ class Curso:
 class Main:
     def main():
         print("Ejercicio Estudiante")
-        list_estudiantes = []
+        list_estudiantes = {}
         estudiante = Estudiante("48039813", "Pepe", "Argento", "20", 0)
         list_estudiantes.append(estudiante)
         print(f"Informacion del estudiante: {estudiante}")

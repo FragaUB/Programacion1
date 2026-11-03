@@ -10,7 +10,7 @@ classDiagram
     }
 
     class Curso {
-        +list students
+        +set students
         +string identificacion
         +string carrera
         +byte Capacidad
