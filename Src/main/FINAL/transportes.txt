@@ -1,0 +1,16 @@
+Codigo,Denominacion,Capacidad_max,Cant_paquetes
+AB123C,Camion,,12000,0
+XZ89KL,Camioneta,,1800,0
+QW45ER,Furgoneta,,3200,0
+TY78UI,Avion,,45000,0
+GH56JK,Barco,,85000,0
+MN34OP,Camion,,15000,0
+RS12TU,Camioneta,,2200,0
+VW90XY,Furgoneta,,2800,0
+ZA67BC,Avion,,60000,0
+DE45FG,Barco,,120000,0
+HI23LM,Camion,,10000,0
+NP78QR,Camioneta,,2500,0
+ST56VW,Furgoneta,,3500,0
+XY34ZA,Avion,,38000,0
+BC12DE,Barco,,95000,0
